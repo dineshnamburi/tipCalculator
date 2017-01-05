@@ -18,7 +18,19 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let defaults = UserDefaults.standard
+        let defVal = defaults.integer(forKey: "defautTip")
+        tippercent.selectedSegmentIndex = defVal
+        let tipArr = [0.18,0.2,0.25]
+        let billAmt = Double(billText.text!) ?? 0
+        let tipAmt = billAmt * tipArr[tippercent.selectedSegmentIndex]
+        let totalAmt = billAmt + tipAmt
+        tipamtLabel.text = String(format: "$%.2f",tipAmt)
+        totalLabel.text = String(format: "$%.2f",totalAmt)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
