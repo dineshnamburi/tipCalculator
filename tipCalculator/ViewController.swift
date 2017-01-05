@@ -27,8 +27,9 @@ class ViewController: UIViewController {
     @IBAction func onTap(_ sender: Any) {
         view.endEditing(true)
     }
+   
 
-    @IBAction func tipCalc(_ sender: Any) {
+    @IBAction func tipCalc(_ sender: AnyObject) {
         let tipArr = [0.18,0.2,0.25]
         let billAmt = Double(billText.text!) ?? 0
         let tipAmt = billAmt * tipArr[tippercent.selectedSegmentIndex]
