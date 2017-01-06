@@ -16,9 +16,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var tippercent: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     override func viewWillAppear(_ animated: Bool) {
+        billText.becomeFirstResponder()
         super.viewWillAppear(animated)
         let defaults = UserDefaults.standard
         let defVal = defaults.integer(forKey: "defautTip")
@@ -42,6 +44,7 @@ class ViewController: UIViewController {
    
 
     @IBAction func tipCalc(_ sender: AnyObject) {
+        
         let tipArr = [0.18,0.2,0.25]
         let billAmt = Double(billText.text!) ?? 0
         let tipAmt = billAmt * tipArr[tippercent.selectedSegmentIndex]
